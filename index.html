@@ -1,0 +1,40 @@
+<!-- Calendário -->
+<div id="calendarSection" style="display: none;">
+
+  <!-- Cabeçalho do Calendário com Navegação -->
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <h5 class="calendar-title" id="calendarTitle"></h5>
+      <div class="calendar-nav">
+        <!-- Botão Agendar Trocas dentro do calendário -->
+        <button class="btn btn-sm btn-outline-warning me-2" id="btnAgendarTrocas" style="display: none;" onclick="toggleModoTroca()">
+          <i class="bi bi-arrow-left-right me-1"></i>Agendar Trocas
+        </button>
+        <button class="calendar-nav-btn" onclick="mudarMes(-1)">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="calendar-nav-btn" onclick="mudarMes(1)">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status de Troca (oculto por padrão) -->
+    <div class="swap-status text-center p-2 mb-2" id="swapStatus" style="display: none; background: #fff3cd; border-radius: 6px;">
+      <i class="bi bi-info-circle me-1"></i>
+      <span id="swapStatusText">Selecione o primeiro dia para troca...</span>
+    </div>
+
+    <!-- Grid do Calendário -->
+    <div class="calendar-grid" id="calendarGrid">
+      <div class="calendar-weekday">SEG</div>
+      <div class="calendar-weekday">TER</div>
+      <div class="calendar-weekday">QUA</div>
+      <div class="calendar-weekday">QUI</div>
+      <div class="calendar-weekday">SEX</div>
+      <div class="calendar-weekday">SÁB</div>
+      <div class="calendar-weekday">DOM</div>
+    </div>
+  </div>
+
+</div>
