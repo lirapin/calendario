@@ -1,0 +1,100 @@
+/* Calendário Tradicional */
+.calendar-container {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid var(--border-color);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Grid do Calendário - AGORA COMEÇA NA SEGUNDA */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Cabeçalho dos dias da semana - SEGUNDA É O PRIMEIRO */
+.calendar-weekday {
+  background: var(--calendar-header);
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: uppercase;
+}
+
+/* Células dos dias */
+.calendar-day {
+  background: white;
+  min-height: 100px;
+  padding: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-day:hover {
+  background: #f8fff8;
+}
+
+.calendar-day.today {
+  background: var(--calendar-today);
+}
+
+.calendar-day.has-data {
+  border-left: 3px solid var(--primary-light);
+}
+
+.calendar-day-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.calendar-day-week {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.calendar-day-stats {
+  font-size: 0.7rem;
+  color: var(--primary);
+  background: #e8f5e9;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+  display: inline-block;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.calendar-day-absent {
+  font-size: 0.7rem;
+  color: var(--danger);
+  background: #ffebee;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
