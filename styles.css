@@ -1,4 +1,66 @@
-/* Calendário Tradicional */
+:root {
+  --primary: #2e7d32;
+  --primary-dark: #1b5e20;
+  --primary-light: #4caf50;
+  --accent: #81c784;
+  --light-bg: #f8fdf8;
+  --card-bg: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #666666;
+  --border-color: #e0e0e0;
+  --success: #4caf50;
+  --danger: #f44336;
+  --info: #2196f3;
+  --warning: #ff9800;
+  --calendar-bg: #ffffff;
+  --calendar-header: #f5f5f5;
+  --calendar-today: #e8f5e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--light-bg);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-bottom: 40px;
+  margin: 0;
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 1.25rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.app-header h1 {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 0.5px;
+}
+
+.brand-dot {
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-block;
+  margin-right: .4rem;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Calendário */
 .calendar-container {
   background: white;
   border-radius: 10px;
@@ -17,7 +79,38 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Grid do Calendário - AGORA COMEÇA NA SEGUNDA */
+.calendar-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-nav-btn {
+  background: #f5f5f5;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  transition: all 0.2s;
+}
+
+.calendar-nav-btn:hover {
+  background: #e8e8e8;
+}
+
+/* Grid do Calendário */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -28,7 +121,6 @@
   overflow: hidden;
 }
 
-/* Cabeçalho dos dias da semana - SEGUNDA É O PRIMEIRO */
 .calendar-weekday {
   background: var(--calendar-header);
   padding: 0.75rem 0.5rem;
@@ -39,7 +131,6 @@
   text-transform: uppercase;
 }
 
-/* Células dos dias */
 .calendar-day {
   background: white;
   min-height: 100px;
@@ -53,6 +144,15 @@
 
 .calendar-day:hover {
   background: #f8fff8;
+}
+
+.calendar-day.empty {
+  background: #f9f9f9;
+  cursor: default;
+}
+
+.calendar-day.empty:hover {
+  background: #f9f9f9;
 }
 
 .calendar-day.today {
@@ -97,4 +197,169 @@
   display: inline-block;
   margin-top: 0.2rem;
   font-weight: 500;
+}
+
+/* Modal */
+.day-modal .modal-content {
+  border-radius: 10px;
+  border: none;
+}
+
+.day-modal .modal-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 1rem 1.5rem;
+  border: none;
+}
+
+.day-modal .modal-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.day-modal .modal-body {
+  padding: 1.5rem;
+}
+
+.day-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.area-section,
+.status-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.area-title,
+.status-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.area-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.area-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.funcionario-name {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  background: #f8fff8;
+  border-radius: 6px;
+  border-left: 4px solid var(--primary-light);
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  min-height: 32px;
+}
+
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.badge-presente {
+  background: var(--success);
+  color: white;
+}
+
+.badge-ausente {
+  background: var(--danger);
+  color: white;
+}
+
+/* Mensagem vazia */
+.empty-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-message i {
+  font-size: 3rem;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+/* Assinatura */
+.assinatura {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .day-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .calendar-day {
+    min-height: 80px;
+    padding: 0.4rem;
+  }
+  
+  .calendar-day-number {
+    font-size: 0.8rem;
+  }
+  
+  .calendar-day-week {
+    font-size: 0.7rem;
+  }
+  
+  .calendar-day-stats,
+  .calendar-day-absent {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+  }
 }
